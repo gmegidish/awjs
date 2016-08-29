@@ -1,0 +1,35 @@
+<script type="text/javascript" src="http://www.megidish.net/awjs/facebook/resources.js?r=2"></script>
+<script type="text/javascript" src="http://www.megidish.net/awjs/facebook/anotherworld.js?r=3"></script>
+<div id="game" style="width: 640px;">
+	<div id="gameScreen" style="width: 640px; height: 400px;"></div>
+		<div style="padding-top: 2px;">
+			<div style="float: left;">
+				<input type="button" value="Pause" onclick="onPause()" id="pauseButton" /> Keys: left, right, up, down, "A" to shoot/run
+			</div>
+			<div style="float: right;">
+				<span id="framenumber" style="font-size: 10px; font-family: Courier New">0 (0 fps)</span>
+			</div>                   
+			<br style="clear: both;" />
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	function onPause()
+	{
+		var e = document.getElementById("pauseButton");
+		if (e.value == "Pause")
+		{
+			e.value = "Run";
+			awjs.pause();
+		}
+		else
+		{
+			e.value = "Pause";
+			awjs.run();
+		}
+	}
+
+	awjs.init("gameScreen"); 
+	awjs.run();
+	</script>
+</div>

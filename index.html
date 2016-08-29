@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+	<title>Another World JS - Megidish.net</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body style="margin: 0px auto; text-align: center; padding: 0px 0px; width: 780px; background: #e6e6e6 url(background_lighter.png) repeat-x top left; min-height: 800px;">
+	<div style="background-color: #fff; padding-top: 10px; width: 780px; text-align: center; border-left: 1px solid #ccc; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc;">
+
+		<div style="text-align: right; width: 720px; margin: 0px; padding: 0px; "> 
+			<div style="width: 300px;">
+				<div class="addthis_toolbox addthis_default_style">
+					<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4b7a597b75ef557a" class="addthis_button_compact">Share</a>
+					<span class="addthis_separator">|</span>
+					<a class="addthis_button_facebook"></a>
+					<a class="addthis_button_myspace"></a>
+					<a class="addthis_button_google"></a>
+					<a class="addthis_button_twitter"></a>
+				</div>
+				<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4b7a597b75ef557a"></script>
+			</div> 
+		</div>
+		<h1 style="font-family: helvetica,sans-serif; font-size: 78px; color: #333; font-weight: bold; margin: 0px; padding: 0px;">
+			Another World JS
+		</h1>
+		<div align="center">
+			<div style="font-family: Arial; font-size: 14px; width: 650px; text-align: left;">
+				<p style="text-align: justify;">
+				Another World (or, Out of This World) is a wonderful game developed by <a href="http://en.wikipedia.org/wiki/Eric_Chahi" target="_blank">Eric Chahi</a> and released
+				in 1991.
+				</p>
+
+				<p style="text-align: justify;">
+				I have <em>some kind of obsession</em> with this game. During the years, I ported various versions of the game (3DO, PC, hires) to a handful
+				of platforms: PSP, PS2, GBA and PC. Here is my new <strong>pure Javascript</strong> implementation. No plugins, no ActiveX, no Flash. Just need a modern
+				browser (Chrome, Safari, Firefox, Opera) and you're good to go.
+				</p>
+
+				<script type="text/javascript" src="http://dpb9ewj3mvmac.cloudfront.net/games/awjs/resources.js"></script>
+				<script type="text/javascript" src="anotherworld.js"></script>
+
+				<div id="game" style="width: 640px;">
+					<div id="gameScreen" style="width: 640px; height: 400px;"></div>
+
+					<div style="padding-top: 2px;">
+						<div style="float: left;">
+							<input type="button" value="Pause" onclick="onPause()" id="pauseButton" /> Keys: left, right, up, down, "A" to shoot/run
+						</div>
+						<div style="float: right;">
+							<span id="framenumber" style="font-size: 10px; font-family: Courier New">0 (0 fps)</span>
+						</div>                   
+						<br style="clear: both;" />
+					</div>
+				</div>
+
+				<script type="text/javascript">
+				function onPause()
+				{
+					var e = document.getElementById("pauseButton");
+					if (e.value == "Pause")
+					{
+						e.value = "Run";
+						awjs.pause();
+					}
+					else
+					{
+						e.value = "Pause";
+						awjs.run();
+					}
+				}
+
+				awjs.init("gameScreen"); 
+				awjs.run();
+				</script>
+
+				<div>
+				</div>
+
+				<a name="faq" />
+				<h2>FAQ</h2>
+				<p>
+				<strong>Q. Is the game completable?</strong><br />
+				A. Most probably not :)
+				</p>
+				<p>
+				<strong>Q. I see graphic glitches!</strong><br />
+				A. Yes! And there are plenty of them!<br/>
+				Let me explain technically some of the stuff you're experiencing: when the cage falls over the guard, a blue-ish
+				rectangle is drawn on top of his head. There are 3 rendering modes of polygons: opaque, alpha, and copy. Alpha and
+				copy are not supported. This is also why the elevator is as crappy as it is. When you pick up your gun, you will
+				also notice a quick flash of random colors. It happens because the game uses 4bit palettes, while this version uses 24bit
+				RGB and no lookups. Fixing this problem means hell :)
+				<p>
+				<strong>Q. Why port to Javascript?</strong><br />
+				A. I just wanted to try out the &lt;canvas&gt; tag, see what I can do with it. What a better test-case than port
+				such an epic game!
+				</p>
+				<p>
+				<strong>Q. What's missing in this version?</strong><br />
+				A. Only one level is supported, and that one is broken as well. There are graphical glitches, movement bugs,
+				and no music or sound effects. As said before, it's only for messing with &lt;canvas&gt;	
+				</p>
+				<p>
+				<strong>Q. What is the difference between the different ports?</strong><br />
+				A. There a 4 major ports: Classic computers (DOS, Amiga, Atari ST, Apple2gs), Classic consoles (Genesis, SNES), 3DO (which
+				had incredible background graphics and CD audio music, and Hi Res (the latest version, you can buy it <a href="http://www.anotherworld.fr/anotherworld_uk/another_world.htm">here</a>). 
+				There is also an official mobile version, and my GBA, PSP and PS2 version which were never released.
+				</p>
+				<p>
+				<strong>Q. Will you ever finish this port?</strong><br />
+				A. Probably not. I don't see a point beyond the proof of concept. There is an excellent (official)
+				re-release of the game available for Windows (<a href="http://www.anotherworld.fr/images/another_world/AW_arrivee_1280.jpg" target="_blank">screenshot</a>)
+				and mobile. Both can be found <a href="http://www.anotherworld.fr/anotherworld_uk/another_world.htm" rel="nofollow">here</a>.
+				</p>
+				<p>
+				<strong>Q. Graphics are too smooth, can't I do anything about it?</strong><br />
+				A. At the moment no. For sake of speed of implementation, I'm using &lt;canvas&gt;'s methods for drawing polygons,
+				which are anti-aliased. Furthermore, the vectors don't have enough precision for 640x400, they look terrific on
+				320x200 (original screen size), but when scaled up, you will notice some missing pixels. One last thing, I <em>did</em>
+				try to do manual scaleup (all browsers do yucky bilinear filtering), but that reduced frame rate by 80% :) Firefox 3.6
+				has a CSS attribute to fix this, but it will take some years until we all have that feature.
+				</p>
+				<p>
+				<strong>Q. What about sound and music, are these possible?</strong><br />
+				A. Technically, these can be easily supported with HTML5's &lt;audio&gt; tag. 
+				</p>        
+				<p>
+				<strong>Q. What about Heart of The Alien?</strong></br />
+				A. Glad you asked! I ported HOTA in its entirety from Sega CD to all modern computers (even Amiga and GP32 are supported!).
+				You can find more at the <a href="http://hota.sf.net">Heart of The Alien Redux</a> homepage.
+				</p>
+				<p><strong>Q. Any additional credits?</strong><br />
+				A. Gregory Montoir (cyx) of ScummVM fame, for sharing a lot of information about the PC version, and his work <em>RAW</em>.
+				</p>
+				<p>
+				<strong>Q. Did you ever meet Eric Chahi?</strong><br />
+				A. Yes I have! After porting the new Another World HI RES to PSP, I boarded a plane and met up with Eric and 
+				a friend (hey Vincent!) for sushi. I was too embarrased to ask for a photo :(
+				</p>
+				<p>
+				<strong>Q. You're awesome, did you know that?</strong><br />
+				A. Super! <a href="mailto:gil@megidish.net">Drop me an email</a>! :)
+				</p>
+			</div>
+		</div>
+		<div style="background-color: #EEEEEE; margin: 20px 0px 0px 0px; padding: 14px;">
+			<strong>Another World JS</strong> made by <a href="http://www.megidish.net/">Gil Megidish</a>. I can be contacted at 
+			<a href="mailto:gil@megidish.net">gil@megidish.net</a>. Good Evening, Professor!<br />
+			English | <a href="http://softdroid.net/awjs-ru/" rel="nofollow">Russian</a>
+		</div>
+		<div style="display: none;">	
+			<img src="screenshot.png" alt="Another World JS" />
+		</div>
+	</div>
+	<br />
+
+	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+	</script>
+	<script type="text/javascript">
+	_uacct = "UA-541540-2";
+	urchinTracker();
+	</script>
+</body>
+</html>
+</body>
+</html>
